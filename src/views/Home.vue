@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div>home</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { onActivated, onDeactivated } from "vue";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+  setup() {
+    onActivated(() => {
+      console.log("Home 緩存的組件激活時調用");
+    });
+
+    onDeactivated(() => {
+      console.log("Home 緩存的組件停用時調用");
+    });
+  },
+  create() {
+    console.log("Home組件被創建");
+  },
+  unmounted() {
+    console.log("Home組件被銷毀");
+  },
+};
 </script>
+
+<style>
+</style>
